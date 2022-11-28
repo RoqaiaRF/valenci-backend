@@ -1,12 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
 var sql;
 
-const storeInfo = (info) => {
+const infoController = (info) => {
 
-    const db = new sqlite3.Database("../database/data.db", sqlite3.OPEN_READWRITE, (err) => {
-        if (err) return console.error(err);
-
-    });
+    const db = new sqlite3.Database("./data.db");
 
     let first_name = info.first_name;
     let second_name = info.second_name;
@@ -21,9 +18,61 @@ const storeInfo = (info) => {
     let phone = info.phone;
     let isKafeel = info.isKafeel;
 
-    sql = `INSERT INTO data (first_name, second_name, third_name,last_name,national_id, type_doc, number_doc, nationality, gender, phone, isKafeel) VALUES (${first_name}, ${second_name}, ${third_name},${last_name},${national_id}, ${type_doc}, ${number_doc}, ${nationality}, ${gender}, ${phone}, ${isKafeel})`
+    sql = `INSERT INTO data(first_name, second_name, third_name,last_name,national_id,
+            type_doc) VALUES
+            (${first_name}, ${second_name}, ${third_name},${last_name},${national_id},
+            ${type_doc})`
+  
 
-    // let first_name_kafeel = info.first_name_kafeel;
+    db.run(sql)
+
+
+}
+
+module.exports = infoController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// , sqlite3.OPEN_READWRITE, (err) => {
+//     if (err) return console.error(err);
+
+
+  // let first_name_kafeel = info.first_name_kafeel;
     // let second_name_kafeel = info.second_name_kafeel;
     // let third_name_kafeel = info.third_name_kafeel;
     // let last_name_kafeel = info.last_name_kafeel;
@@ -35,11 +84,6 @@ const storeInfo = (info) => {
     // let gender_kafeel = info.third_name_kafeel;
     // let phone_kafeel = info.last_name_kafeel;
 
-    db.run(sql)
-
-}
-
-
 // const sqlcontroller = () => {
 
 //     //Connect to database
@@ -49,11 +93,11 @@ const storeInfo = (info) => {
 
 //     });
 
-//     // CREATE Table 
+//     // CREATE Table
 //     sql = `CREATE TABLE data (
 // 	id INTEGER PRIMARY KEY,
 //     first_name TEXT NOT NULL,
-//     second_name TEXT NOT NULL, 
+//     second_name TEXT NOT NULL,
 //     third_name TEXT NOT NULL,
 //     last_name TEXT NOT NULL,
 //     national_id TEXT NOT NULL,
@@ -64,7 +108,7 @@ const storeInfo = (info) => {
 //     phone TEXT,
 
 //     first_name_kafeel TEXT,
-//     second_name_kafeel TEXT, 
+//     second_name_kafeel TEXT,
 //     third_name_kafeel TEXT,
 //     last_name_kafeel TEXT ,
 //     national_id_kafeel TEXT
@@ -72,21 +116,21 @@ const storeInfo = (info) => {
 //     number_doc_kafeel TEXT,
 //     nationality_kafeel TEXT,
 //     gender_kafeel TEXT,
-//     phone_kafeel TEXT, 
+//     phone_kafeel TEXT,
 
-//     province TEXT NOT NULL, 
+//     province TEXT NOT NULL,
 //     region TEXT NOT NULL,
 //     street TEXT NOT NULL,
 //     landmark TEXT NOT NULL,
 //     house_number TEXT NOT NULL,
-//     store_name TEXT NOT NULL, 
+//     store_name TEXT NOT NULL,
 //     employee_name TEXT NOT NULL,
-//     province_kafeel TEXT, 
+//     province_kafeel TEXT,
 //     region_kafeel TEXT,
 //     street_kafeel TEXT ,
 //     landmark_kafeel TEXT,
 //     house_number_kafeel TEXT,
-//     store_name_kafeel TEXT, 
+//     store_name_kafeel TEXT,
 //     employee_name_kafeel TEXT,
 //     type_of_employment TEXT NOT NULL,
 //     employer TEXT NOT NULL,
@@ -130,6 +174,3 @@ const storeInfo = (info) => {
 // }
 // sqlcontroller();
 
-
-
-module.exports = {storeInfo}
