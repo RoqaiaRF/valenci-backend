@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app =express();
+var multer = require('multer');
+
 var cors = require('cors');
   app.use(
     cors({
@@ -12,15 +14,15 @@ var cors = require('cors');
     })
   );
 
-  
 const helmet = require("helmet");
 const morgan = require("morgan");
 
 const indexRouter = require("./routes");
-const uploadFile = require("./routes/uploadFile")
+const uploadFile = require("./routes/uploadfile")
+const info = require("./routes/info");
 
 //Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // using bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
@@ -29,6 +31,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 app.use("/", indexRouter);
+app.use("/info", info);
 
 app.use("/uploadfile", uploadFile);
 

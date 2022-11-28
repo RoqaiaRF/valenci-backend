@@ -1,55 +1,36 @@
-const sqlite3 = require('sqlite3').verbose();
-var sql;
+const { Sequelize, sequelize } = require("../../database/connection");
+const Info = require("../models/Info")(sequelize, Sequelize);
 
-const infoController = (info) => {
+const infoController = async (info) => {
+    var id;
+    await Info.create({
+        first_name: info.first_name,
+        second_name: info.second_name,
+        third_name: info.third_name,
+        last_name: info.last_name,
+        national_id: info.national_id,
+        type_doc: info.type_doc,
+        number_doc: info.number_doc,
+        nationality: info.nationality,
+        gender: info.gender,
+        phone: info.phone,
+        is_kafeel: info.is_kafeel,
+        first_name_kafeel: info.first_name_kafeel,
+        second_name_kafeel: info.second_name_kafeel,
+        third_name_kafeel: info.third_name_kafeel,
+        last_name_kafeel: info.last_name_kafeel,
+        national_id_kafeel: info.national_id_kafeel,
+        type_doc_kafeel: info.type_doc_kafeel,
+        number_doc_kafeel: info.number_doc_kafeel,
+        nationality_kafeel: info.nationality_kafeel,
+        gender_kafeel: info.gender_kafeel,
+        phone_kafee: info.phone_kafee,
+    }).then(result => (id = result.id));
 
-    const db = new sqlite3.Database("./data.db");
-
-    let first_name = info.first_name;
-    let second_name = info.second_name;
-    let third_name = info.third_name;
-    let last_name = info.last_name;
-    let national_id = info.national_id;
-    let type_doc = info.type_doc;
-
-    let number_doc = info.number_doc;
-    let nationality = info.nationality;
-    let gender = info.gender;
-    let phone = info.phone;
-    let isKafeel = info.isKafeel;
-
-    sql = `INSERT INTO data(first_name, second_name, third_name,last_name,national_id,
-            type_doc) VALUES
-            (${first_name}, ${second_name}, ${third_name},${last_name},${national_id},
-            ${type_doc})`
-  
-
-    db.run(sql)
-
-
+    return id;
 }
 
 module.exports = infoController
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

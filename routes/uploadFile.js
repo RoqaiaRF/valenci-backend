@@ -7,8 +7,6 @@ var router = express.Router();
 
 
 router.post("/", function(request, response, next){
-    console.log(request)
-
 	var storage = multer.diskStorage({
 
 		destination:function(request, file, callback)
@@ -23,12 +21,12 @@ router.post("/", function(request, response, next){
 
 			var temp_file_extension = temp_file_arr[1];
 
-			callback(null, temp_file_name + '-' + Date.now() + '.' + temp_file_extension);
+			callback(null, temp_file_name + '.' + temp_file_extension);
 		}
 
 	});
 
-	var upload = multer({storage:storage}).single('signiture');
+	var upload = multer({storage:storage}).array('files',5);
 
 	upload(request, response, function(error){
 
@@ -38,11 +36,11 @@ router.post("/", function(request, response, next){
 		}
 		else
 		{
-			return response.end('File is uploaded successfully');
+			return response.end('Files is uploaded successfully');
 		}
 
 	});
-
+	
 });
 
 module.exports = router;
