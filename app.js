@@ -20,6 +20,7 @@ const morgan = require("morgan");
 const indexRouter = require("./routes");
 const uploadFile = require("./routes/uploadfile")
 const info = require("./routes/info");
+const address = require("./routes/address");
 
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +33,7 @@ app.use(helmet());
 
 app.use("/", indexRouter);
 app.use("/info", info);
-
+app.use("/address", address);
 app.use("/uploadfile", uploadFile);
 
 // adding morgan to log HTTP requests
