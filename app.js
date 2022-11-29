@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app =express();
-var multer = require('multer');
 
 var cors = require('cors');
   app.use(
@@ -18,10 +17,11 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 const indexRouter = require("./routes");
-const uploadFile = require("./routes/uploadfile")
+const front_id = require("./routes/front_id")
 const info = require("./routes/info");
 const address = require("./routes/address");
-
+const work = require("./routes/work");
+const car = require("./routes/car");
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -30,11 +30,14 @@ app.use(bodyParser.json());
 
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
+app.use(express.static('public'));
 
 app.use("/", indexRouter);
 app.use("/info", info);
+app.use("/work", work);
+app.use("/car", car);
 app.use("/address", address);
-app.use("/uploadfile", uploadFile);
+app.use("/front_id", front_id);
 
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
