@@ -1,23 +1,25 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const app =express();
+const app = express();
 
 var cors = require('cors');
-  app.use(
-    cors({
-      allowedHeaders: ["authorization", "Content-Type", 'X-Requested-With'], // you can change the headers
-      exposedHeaders: ["authorization", 'X-Requested-With'], // you can change the headers
-      origin: "*",
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-      preflightContinue: false
-    })
-  );
+app.use(
+  cors({
+    allowedHeaders: ["authorization", "Content-Type", 'X-Requested-With'], // you can change the headers
+    exposedHeaders: ["authorization", 'X-Requested-With'], // you can change the headers
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false
+  })
+);
 
 const helmet = require("helmet");
 const morgan = require("morgan");
 
 const indexRouter = require("./routes");
 const madeenFiles = require("./routes/madeenFiles")
+const kafeelFiles = require("./routes/kafeelFiles")
+
 const info = require("./routes/info");
 const address = require("./routes/address");
 const work = require("./routes/work");
@@ -39,6 +41,7 @@ app.use("/work", work);
 app.use("/car", car);
 app.use("/address", address);
 app.use("/madeenfiles", madeenFiles);
+app.use("/kafeelfiles", kafeelFiles);
 
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
