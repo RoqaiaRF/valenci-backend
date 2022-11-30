@@ -1,8 +1,6 @@
 
 var express = require('express');
-
 var multer = require('multer');
-
 var router = express.Router();
 
 var front_idController = require("../app/controllers/front_idController")
@@ -32,16 +30,9 @@ router.post("/", function(request, response, next){
 	var upload = multer({storage:storage}).array('front_id');
     
 	upload(request, response,async function(error){
+		
+		response.end( await front_idController (request.files[0].path, request.body.id))
 
-        await front_idController (request.files[0].path, request.body.id)
-		if(error)
-		{
-			return response.end('Error Uploading File'+ error);
-		}
-		else
-		{
-			return response.end('Files is uploaded successfully');
-		}
 
 	});
 	
