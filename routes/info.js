@@ -13,7 +13,6 @@ router.post("/",async function  (req, res, next) {
     else {
       
         return res.status(200).json({
-            status: "successfully",
             message: await infoController (req.body),
           });
     }

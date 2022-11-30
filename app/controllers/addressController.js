@@ -3,7 +3,7 @@ const Info = require("../models/Info")(sequelize, Sequelize);
 
 const addressController = async (info) => {
     var id;
-    const [updatedRows] =  await Info.update({
+    const updatedRows =  await Info.update({
         province: info.province,
         region: info.region,
         street: info.street,
@@ -16,8 +16,7 @@ const addressController = async (info) => {
         street_kafeel: info.street_kafeel,
         landmark_kafeel: info.landmark_kafeel,
         house_number_kafeel: info.house_number_kafeel,
-        store_name_kafeel: info.store_name_kafeel,
-        employee_name_kafeel: info.employee_name_kafeel
+     
     }
         ,
         {

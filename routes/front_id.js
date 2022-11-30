@@ -33,7 +33,6 @@ router.post("/", function(request, response, next){
 		
 		response.end( await front_idController (request.files[0].path, request.body.id))
 
-
 	});
 	
 });

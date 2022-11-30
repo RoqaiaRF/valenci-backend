@@ -3,7 +3,7 @@ const Info = require("../models/Info")(sequelize, Sequelize);
 
 const workController = async (info) => {
     var id;
-    const [updatedRows] =  await Info.update({
+    const updatedRows =  await Info.update({
         type_of_employment : info.type_of_employment,
         employer : info.employer,
         phone_work : info.phone_work,
