@@ -19,6 +19,7 @@ const morgan = require("morgan");
 const indexRouter = require("./routes");
 const madeenFiles = require("./routes/madeenFiles")
 const kafeelFiles = require("./routes/kafeelFiles")
+const signiture = require("./routes/signiture")
 
 const info = require("./routes/info");
 const address = require("./routes/address");
@@ -42,6 +43,7 @@ app.use("/car", car);
 app.use("/address", address);
 app.use("/madeenfiles", madeenFiles);
 app.use("/kafeelfiles", kafeelFiles);
+app.use("/signiture", signiture);
 
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
