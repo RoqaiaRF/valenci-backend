@@ -20,9 +20,10 @@ router.post("/", function (request, response, next) {
     },
   });
 
-  var upload = multer({ storage: storage }).array("front_id");
+  var upload = multer({ storage: storage }).any();
 
   upload(request, response, async function (error) {
+    console.log(request.files);
     if (!request.files) {
       response.status(400).json({ message: "files required" });
       return;
