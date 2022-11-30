@@ -7,7 +7,7 @@ var front_idController = require("../app/controllers/front_idController");
 router.post("/", function (request, response, next) {
   var storage = multer.diskStorage({
     destination: function (request, file, callback) {
-      callback(null, "./upload/front_id_image");
+      callback(null, "./upload");
     },
     filename: function (request, file, callback) {
       var temp_file_arr = file.originalname.split(".");
@@ -20,9 +20,10 @@ router.post("/", function (request, response, next) {
     },
   });
 
-  var upload = multer({ storage: storage }).array("front_id");
+  var upload = multer({ storage: storage }).array("files");
 
   upload(request, response, async function (error) {
+    console.log(request.files);
     if (!request.files) {
       response.status(400).json({ message: "files required" });
       return;

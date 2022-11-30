@@ -17,7 +17,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 const indexRouter = require("./routes");
-const front_id = require("./routes/files")
+const files = require("./routes/files")
 const info = require("./routes/info");
 const address = require("./routes/address");
 const work = require("./routes/work");
@@ -38,7 +38,7 @@ app.use("/info", info);
 app.use("/work", work);
 app.use("/car", car);
 app.use("/address", address);
-app.use("/front_id", front_id);
+app.use("/files", files);
 
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
