@@ -20,7 +20,7 @@ router.post("/", function (request, response, next) {
     },
   });
 
-  var upload = multer({ storage: storage }).array("files");
+  var upload = multer({ storage: storage }).any();
 
   upload(request, response, async function (error) {
     console.log(request.files);
