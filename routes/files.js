@@ -2,7 +2,7 @@ var express = require("express");
 var multer = require("multer");
 var router = express.Router();
 
-var front_idController = require("../app/controllers/front_idController");
+var madeenFilesController = require("../app/controllers/madeenFilesController");
 
 router.post("/", function (request, response, next) {
   var storage = multer.diskStorage({
@@ -23,13 +23,12 @@ router.post("/", function (request, response, next) {
   var upload = multer({ storage: storage }).any();
 
   upload(request, response, async function (error) {
-    console.log(request.files);
     if (!request.files) {
       response.status(400).json({ message: "files required" });
       return;
     }
     response.end(
-      await front_idController(request.files[0].path, request.body.id)
+      await madeenFilesController(request.files, request.body.id)
     );
   });
 });

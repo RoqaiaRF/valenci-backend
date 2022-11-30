@@ -16,7 +16,7 @@ const carController = async (info) => {
     if (updatedRows) {
         return (`Updated rows: ${updatedRows}`);
         } else {
-        return "User not found";
+        return "ERROR when update the data";
         }
 }
 
