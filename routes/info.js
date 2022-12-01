@@ -1,21 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const infoController = require(".././app/controllers/infoController")
+const {  addinfoValidation} = require('../middleware/validation/validator/infoValidator');
 
-router.post("/",async function  (req, res, next) {
+router.post("/",addinfoValidation,async function  (req, res, next) {
 
-    if (!req.body) {
-      return res.status(400).json({
-        status: "Bad Request",
-        message: "req body cannot be empty!",
-      });
-    }
-    else {
-      
+
         return res.status(200).json({
             message: await infoController (req.body),
           });
-    }
+   
   });
 
 module.exports = router;
