@@ -20,8 +20,7 @@ router.post("/", function (request, response, next) {
     },
   });
 
-  var upload = multer({ storage: storage }).array("signiture");
-  console.log(request.files)
+  var upload = multer({ storage: storage }).any();
   upload(request, response, async function (error) {
     if (!request.files) {
       response.status(400).json({ message: "files required" });
