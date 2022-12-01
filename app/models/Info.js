@@ -110,12 +110,7 @@ module.exports = (sequelize, Sequelize) => {
             house_number_kafeel: {
                 type: Sequelize.STRING,
             },
-            store_name_kafeel: {
-                type: Sequelize.STRING,
-            },
-            employee_name_kafeel: {
-                type: Sequelize.STRING,
-            },
+           
             type_of_employment: {
                 type: Sequelize.STRING,
             },
@@ -212,6 +207,13 @@ module.exports = (sequelize, Sequelize) => {
             },
             daman_image_kafeel: {
                 type: Sequelize.STRING,
+            },
+      
+           job_kafeel: {
+               type: Sequelize.STRING,
+            },  
+             job: {
+               type: Sequelize.STRING,
             },
             another_attachments_kafeel: {
                 type: Sequelize.STRING,

@@ -10,6 +10,7 @@ const workController = async (info) => {
         monthly_income_rate : info.monthly_income_rate,
         other_source_of_income : info.other_source_of_income,
         other_income_value : info.other_income_value,
+        job : info.job,
         is_daman : info.is_daman,
         type_of_employment_kafeel: info.type_of_employment_kafeel, 
         employer_kafeel : info.employer_kafeel,
@@ -17,7 +18,9 @@ const workController = async (info) => {
         monthly_income_rate_kafeel : info.monthly_income_rate_kafeel,
         other_source_of_income_kafeel : info.other_source_of_income_kafeel,
         other_income_value_kafeel : info.other_income_value_kafeel,
+        job_kafeel : info.job_kafeel,
         is_daman_kafeel : info.is_daman_kafeel,
+
     }
         ,
         {
