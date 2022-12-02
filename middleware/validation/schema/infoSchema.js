@@ -100,7 +100,7 @@ const infoSchema = {
             }),
         nationality: joi
             .string()
-            .min(10)
+            .min(0)
             .message("من فضلك ادخل الجنسية")
             .max(15)
             .message("من فضلك ادخل  الجنسية")
@@ -112,7 +112,7 @@ const infoSchema = {
             }),
         is_kafeel: joi
             .string()
-            .min(3)
+            .min(0)
             .message("من فضلك  حدد وجود كفيل او لا")
             .max(5)
             .message("من فضلك  حدد وجود كفيل او لا")
@@ -132,83 +132,43 @@ const infoSchema = {
             .required(),
 
         first_name_kafeel: joi
-            .string()
-            .min(2)
-            .message(" من فضلك ادخل الاسم الاول للكفيل")
-            .required()
-            .max(100)
-            .message("من فضلك  ادخل اسم الاول  للكفيل اقل من 100 حرف")
+        .string().allow(null).allow('')
+
            ,
         second_name_kafeel: joi
-            .string()
-            .min(2)
-            .message(" من فضلك ادخل اسم الاب للكفيل")
-            .required()
-            .max(100)
-            .message("من فضلك  ادخل اسم الاب للكفيل اقل من 100 حرف")
+        .string().allow(null).allow('')
+
            ,
         third_name_kafeel: joi
-            .string()
-            .min(2)
-            .message(" من فضلك ادخل اسم الجد للكفيل")
-            .required()
-            .max(100)
-            .message("من فضلك  ادخل اسم  للكفيل الجد اقل من 100 حرف")
+        .string().allow(null).allow('')
+
             ,
         last_name_kafeel: joi
-            .string()
-            .min(2)
-            .message(" من فضلك ادخل العائلة للكفيل")
-            .required()
-            .max(100)
-            .message("من فضلك  ادخل العائلة  للكفيل اقل من 100 حرف")
+        .string().allow(null).allow('')
+
            ,
         national_id_kafeel: joi
-            .number()
-            .integer()
-            .min(100000000)
-            .message("ادخل رقم وطني صحيح للكفيل")
-            .max(9999999999999)
-            .message(" ادخل رقم وطني صحيح للكفيل")
+        .string().allow(null).allow('')
+
             ,
         gender_kafeel: joi
-            .string()
-            .min(2)
-            .message(" من فضلك الجنس للكفيل")
-            .required()
-            .max(100)
-            .message(" من فضلك حدد الجنس للكفيل")
-           ,
+        .string().allow(null).allow(''),
+
         type_doc_kafeel: joi
-            .string()
-            .min(2)
-            .message("من فضلك ادخل نوع الوثيقة للكفيل")
-            .required()
-            .max(100)
-            .message("من فضلك ادخل نوع الوثيقة للكفيل")
+        .string().allow(null).allow('')
+
           ,
         number_doc_kafeel: joi
-            .string()
-            .min(2)
-            .message("من فضلك ادخل رقم وثيقة صحيح للكفيل")
-            .max(15)
-            .message("من فضلك ادخل رقم وثيقة صحيح للكفيل")
+        .string().allow(null).allow('')
+
             ,
         nationality_kafeel: joi
-            .string()
-            .min(10)
-            .message(" من فضلك ادخل الجنسية للكفيل")
-            .max(15)
-            .message("من فضلك ادخل  الجنسية")
+        .string().allow(null).allow('')
+
            ,
         phone_kafeel: joi
-            .number()
-            .integer()
-            .min(100000000000)
-            .message("رقم الهاتف خاطئ  للكفيل, ادخل رقم هكذا (962712345678)")
-            .max(999999999999)
-            .message("رقم الهاتف خاطئ  للكفيل, ادخل رقم هكذا (962712345678)")
-            ,
+        .string().allow(null).allow('')
+
     }),
 };
 

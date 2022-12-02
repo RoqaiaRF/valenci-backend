@@ -29,17 +29,18 @@ const attachmentHelper = async (id) => {
     income_certificate,
     daman_image,
     another_attachments,
-    signiture,
     front_id_image_kafeel,
     back_id_image_kafeel,
     family_book_image_kafeel,
     income_certificate_kafeel,
     daman_image_kafeel,
     another_attachments_kafeel,
+    signiture,
   ].filter((n) => n);
 
   let result = [];
-  for (let i = 0; i < attachments.length; i++) {
+  for (let i = 0; i < attachments.length - 1; i++) {
+  
     result.push({
       content: fs
         .readFileSync(
@@ -53,12 +54,24 @@ const attachmentHelper = async (id) => {
       disposition: "attachment",
     });
   }
+  result.push({
+    content: fs
+      .readFileSync(
+        `${`C:\/Users\/HP\/Desktop\/Github Project\/valenci-backend\/upload`}\/${
+            attachments[attachments.length - 1] 
+        }`
+      )
+      .toString("base64"),
+    filename: `attachment${attachments.length - 1}.png`,
+    type: "image/png",
+    disposition: "attachment",
+  });
 
+  return result;
 };
 
 const sendEmailController = async (id) => {
-
-    let html = template(await getInfoController(id));
+  let html = template(await getInfoController(id));
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: process.env.RECEVIER_EMAIL, // Change to your recipient

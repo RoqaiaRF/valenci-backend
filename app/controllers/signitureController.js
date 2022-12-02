@@ -2,6 +2,8 @@ const { Sequelize, sequelize } = require("../../database/connection");
 const Info = require("../models/Info")(sequelize, Sequelize);
 const sendEmailController = require ("./sendEmailController")
 const signitureFilesController = async (signiture, id) => {
+
+  console.log("signiture", signiture)
   const updatedRows = await Info.update(
     {
       signiture: signiture,

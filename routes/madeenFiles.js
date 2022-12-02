@@ -30,7 +30,6 @@ router.post("/", function (request, response, next) {
   var upload = multer({ storage: storage }).any();
 
   upload(request, response, async function (error) {
-    console.log(request.files)
 
     const validate = madeenFilesValidator(request.files);
     const isEmpty = Object.keys(validate).length === 0;

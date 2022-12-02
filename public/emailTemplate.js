@@ -447,10 +447,6 @@ const template = (info) => {
         ${info.installment_period}
       </p> 
 
-      <p><strong> مسجل بالضمان : :  </strong>
-        ${info.is_daman}
-      </p> 
-
       <p><strong> نوع المركبة :  </strong>
         ${info.vehicle_type}
       </p> 
@@ -537,9 +533,6 @@ const template = (info) => {
           ${info.is_daman_kafeel}
         </p> 
 
-      <p><strong> مسجل بالضمان : :  </strong>
-        ${info.is_daman_kafeel}
-      </p> 
 
     
             <!-- END CENTERED WHITE CONTAINER -->

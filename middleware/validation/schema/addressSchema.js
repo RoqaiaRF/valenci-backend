@@ -103,35 +103,20 @@ const addressSchema = {
       }),
 
     province_kafeel: joi
-      .string().allow(null, '')
-      .min(3)
-      .message("من فضلك ادخل اسم المحافظة للكفيل بشكل صحيح")
-      .max(100)
-      .message("من فضلك  ادخل اسم المحافظة للكفيل اقل من 100 حرف"),
+    .string().allow(null).allow(''),
+
     region_kafeel: joi
-      .string()
-      .min(2)
-      .message("من فضلك ادخل اسم المنطقة للكفيل بشكل صحيح")
-      .max(100)
-      .message("من فضلك  ادخل اسم المنطقة للكفيل اقل من 100 حرف"),
+    .string().allow(null).allow(''),
+
     street_kafeel: joi
-      .string()
-      .min(2)
-      .message("من فضلك ادخل اسم الشارع  للكفيل بشكل صحيح")
-      .max(100)
-      .message("من فضلك  ادخل اسم الشارع للكفيل اقل من 100 حرف"),
+    .string().allow(null).allow(''),
+
     landmark_kafeel: joi
-      .string()
-      .min(2)
-      .message("من فضلك ادخل اقرب معلم للكفيل بشكل صحيح")
-      .max(100)
-      .message("من فضلك  ادخل اقرب معلم للكفيل اقل من 100 حرف"),
+    .string().allow(null).allow(''),
+
     house_number_kafeel: joi
-      .string()
-      .min(2)
-      .message("من فضلك ادخل رقم المنزل للكفيل بشكل صحيح")
-      .max(100)
-      .message("من فضلك  ادخل رقم المنزل للكفيل اقل من 100 حرف"),
+    .string().allow(null).allow(''),
+
   }),
 };
 
