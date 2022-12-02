@@ -10,7 +10,7 @@ const madeenFilesController = async (files, id) => {
     let daman_image =  files.find(o => (o.fieldname == 'daman_image')) ? files.find(o => (o.fieldname == 'daman_image')).path : null
     let another_attachments =  files.find(o => (o.fieldname == 'another_attachments')) ? files.find(o => (o.fieldname == 'another_attachments')).path : null
 
-console.log(front_id_image)
+console.log("front_id_image: ", front_id_image)
 
     const updatedRows = await Info.update({
 

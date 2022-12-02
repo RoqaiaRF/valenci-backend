@@ -1,6 +1,11 @@
 const {
     work
 } = require("../schema/workSchema");
+const helper = (arrayOfErrors) =>{
+
+    let array= arrayOfErrors.map(function (el) { return [el.context.key,el.message ]; });
+      return Object.fromEntries(array);
+}
 
 module.exports = {
     addworkValidation: async (req, res, next) => {
@@ -9,7 +14,7 @@ module.exports = {
             res.status(400)
             res.json({
                 success: "Bad request",
-                message: value.error.details[0].message
+                message: helper(value.error.details) 
             })
         } else {
             next();

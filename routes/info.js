@@ -5,7 +5,6 @@ const {  addinfoValidation} = require('../middleware/validation/validator/infoVa
 
 router.post("/",addinfoValidation,async function  (req, res, next) {
 
-
         return res.status(200).json({
             message: await infoController (req.body),
           });

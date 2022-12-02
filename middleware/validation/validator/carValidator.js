@@ -1,6 +1,6 @@
 const {
-    info
-} = require("../schema/infoSchema");
+    car
+} = require("../schema/carSchema");
 
 
 const helper = (arrayOfErrors) =>{
@@ -10,8 +10,8 @@ const helper = (arrayOfErrors) =>{
 }
 
 module.exports = {
-    addinfoValidation: async (req, res, next) => {
-        const value = await info.validate(req.body,{ abortEarly: false });
+    addcarValidation: async (req, res, next) => {
+        const value = await car.validate(req.body,{ abortEarly: false });
         if (value.error) {
             res.status(400)
             res.json({
