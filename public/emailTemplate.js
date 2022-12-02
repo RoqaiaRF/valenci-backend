@@ -1,9 +1,5 @@
-
-const template = (info) =>{
- 
-
-let emailTemplate =
-`<!doctype html>
+const template = (info) => {
+  let emailTemplate = `<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -338,7 +334,7 @@ let emailTemplate =
     </style>
   </head>
   <body>
-    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+    <span class="preheader">معلومات فورم جديد, افتح هنا </span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -346,9 +342,206 @@ let emailTemplate =
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <p><strong> الاسم :  </strong> ${info.first_name + " "+ info.second_name + " "+ info.third_name + " "+ info.last_name}</p> 
-        
 
+            <p><strong> معلومات العميل :  </strong> </p>
+
+            <p><strong> الاسم :  </strong>
+             ${
+               info.first_name +
+               " " +
+               info.second_name +
+               " " +
+               info.third_name +
+               " " +
+               info.last_name
+             }
+            </p> 
+            <p><strong> الرقم الوطني :  </strong>
+              ${info.national_id}
+            </p> 
+            <p><strong> نوع الوثيقة :  </strong>
+              ${info.type_doc}
+            </p> 
+
+            <p><strong> رقم الوثيقة :  </strong>
+              ${info.number_doc}
+            </p> 
+
+            <p><strong> الجنس :  </strong>
+              ${info.gender}
+            </p> 
+
+            <p><strong> رقم الهاتف :  </strong>
+              ${info.phone}
+            </p> 
+
+            <p><strong> المحافظة :  </strong>
+              ${info.province}
+            </p> 
+            <p><strong> اسم المنطقة :  </strong>
+              ${info.region}
+            </p> 
+
+            <p><strong> اسم الشارع :  </strong>
+              ${info.street}
+            </p> 
+
+            <p><strong> اقرب معلم :  </strong>
+              ${info.landmark}
+            </p> 
+
+            <p><strong> رقم المنزل :  </strong>
+              ${info.house_number}
+            </p> 
+    
+            <p><strong> اسم المعرض :  </strong>
+            ${info.store_name}
+          </p> 
+          <p><strong> اسم الموظف :  </strong>
+            ${info.employee_name}
+          </p> 
+
+          <p><strong> نوع العمل :  </strong>
+            ${info.type_of_employment}
+          </p> 
+
+          <p><strong> جهة العمل :  </strong>
+            ${info.employer}
+          </p> 
+          
+          <p><strong> الوظيفة :  </strong>
+            ${info.job}
+          </p> 
+
+          <p><strong> رقم هاتف العمل :  </strong>
+            ${info.phone_work}
+          </p> 
+
+          <p><strong> معدل الدخل الشهري :  </strong>
+          ${info.monthly_income_rate}
+        </p> 
+        <p><strong> مصدر دخل اخر :  </strong>
+          ${info.other_source_of_income}
+        </p> 
+
+        <p><strong> قيمة الدخل الاخر :  </strong>
+          ${info.other_income_value}
+        </p> 
+
+        <p><strong> مسجل بالضمان : :  </strong>
+          ${info.is_daman}
+        </p> 
+
+        <p><strong> نوع المركبة :  </strong>
+          ${info.vehicle_type}
+        </p> 
+
+        <p><strong> نوع المركبة :  </strong>
+        ${info.vehicle_situation}
+      </p> 
+      <p><strong> الدفعة الاولى :  </strong>
+        ${info.first_payment}
+      </p> 
+
+      <p><strong> فترة التقسيط :  </strong>
+        ${info.installment_period}
+      </p> 
+
+      <p><strong> مسجل بالضمان : :  </strong>
+        ${info.is_daman}
+      </p> 
+
+      <p><strong> نوع المركبة :  </strong>
+        ${info.vehicle_type}
+      </p> 
+
+      <p><strong> معلومات الكفيل :  </strong> </p>
+
+      <p><strong> الاسم :  </strong>
+             ${
+               info.first_name_kafeel +
+               " " +
+               info.second_name_kafeel +
+               " " +
+               info.third_name_kafeel +
+               " " +
+               info.last_name_kafeel
+             }
+            </p> 
+            <p><strong> الرقم الوطني :  </strong>
+              ${info.national_id_kafeel}
+            </p> 
+            <p><strong> نوع الوثيقة :  </strong>
+              ${info.type_doc_kafeel}
+            </p> 
+
+            <p><strong> رقم الوثيقة :  </strong>
+              ${info.number_doc_kafeel}
+            </p> 
+
+            <p><strong> الجنس :  </strong>
+              ${info.gender_kafeel}
+            </p> 
+
+            <p><strong> رقم الهاتف :  </strong>
+              ${info.phone_kafeel}
+            </p> 
+
+            <p><strong> المحافظة :  </strong>
+              ${info.province_kafeel}
+            </p> 
+            <p><strong> اسم المنطقة :  </strong>
+              ${info.region_kafeel}
+            </p> 
+
+            <p><strong> اسم الشارع :  </strong>
+              ${info.street_kafeel}
+            </p> 
+
+            <p><strong> اقرب معلم :  </strong>
+              ${info.landmark_kafeel}
+            </p> 
+
+            <p><strong> رقم المنزل :  </strong>
+              ${info.house_number_kafeel}
+            </p> 
+    
+          <p><strong> نوع العمل :  </strong>
+            ${info.type_of_employment_kafeel}
+          </p> 
+
+          <p><strong> جهة العمل :  </strong>
+            ${info.employer_kafeel}
+          </p> 
+          
+          <p><strong> الوظيفة :  </strong>
+            ${info.job_kafeel}
+          </p> 
+
+          <p><strong> رقم هاتف العمل :  </strong>
+            ${info.phone_work_kafeel}
+          </p> 
+
+          <p><strong> معدل الدخل الشهري :  </strong>
+          ${info.monthly_income_rate_kafeel}
+        </p> 
+        <p><strong> مصدر دخل اخر :  </strong>
+          ${info.other_source_of_income_kafeel}
+        </p> 
+
+        <p><strong> قيمة الدخل الاخر :  </strong>
+          ${info.other_income_value_kafeel}
+        </p> 
+
+        <p><strong> مسجل بالضمان : :  </strong>
+          ${info.is_daman_kafeel}
+        </p> 
+
+      <p><strong> مسجل بالضمان : :  </strong>
+        ${info.is_daman_kafeel}
+      </p> 
+
+    
             <!-- END CENTERED WHITE CONTAINER -->
 
             <!-- START FOOTER -->
@@ -357,7 +550,7 @@ let emailTemplate =
                 <tr>
                   <td class="content-block">
                     <span class="apple-link">Company Inc, Amman Jordan</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
+                    <br> Don't like these emails? <a href="http://fareza.net">Unsubscribe</a>.
                   </td>
                 </tr>
                 <tr>
@@ -375,12 +568,9 @@ let emailTemplate =
       </tr>
     </table>
   </body>
-</html>`
+</html>`;
 
+  return emailTemplate;
+};
 
-return emailTemplate
-}
-
-
-
-module.exports = template
+module.exports = template;

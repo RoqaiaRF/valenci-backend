@@ -218,14 +218,14 @@ module.exports = (sequelize, Sequelize) => {
             another_attachments_kafeel: {
                 type: Sequelize.STRING,
             },
-            createdAt: {
-                field: "created_at",
-                type: Sequelize.DATE,
-              },
-            updatedAt: {
-                field: "updated_at",
-                type: Sequelize.DATE,
-              },
+            // createdAt: {
+            //     field: "created_at",
+            //     type: Sequelize.DATE,
+            //   },
+            // updatedAt: {
+            //     field: "updated_at",
+            //     type: Sequelize.DATE,
+            //   },
         },
         {
             timestamps: false,

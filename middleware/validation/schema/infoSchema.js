@@ -63,9 +63,9 @@ const infoSchema = {
         gender: joi
             .string()
             .min(2)
-            .message("من فضلك الجنس")
+            .message("من فضلك  حدد الجنس")
             .required()
-            .max(100)
+            .max(20)
             .message("من فضلك حدد الجنس")
             .required().messages({
                 "string.base": ` يجب ان ترسل نصا`,

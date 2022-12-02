@@ -1,138 +1,81 @@
-const sgMail = require('@sendgrid/mail')
+const sgMail = require("@sendgrid/mail");
 
 require("dotenv").config();
 
 const fs = require("fs");
-const template = require ( "../../public/emailTemplate")
+const template = require("../../public/emailTemplate");
+const getInfoController = require("../controllers/getInfoController");
 
-// let attachment1 = fs.readFileSync(`${__dirname}/file1.pdf`).toString("base64");
+const attachmentHelper = async (id) => {
+  let info = await getInfoController(id);
+  let front_id_image = info.front_id_image;
+  let back_id_image = info.back_id_image;
+  let family_book_image = info.family_book_image;
+  let income_certificate = info.income_certificate;
+  let daman_image = info.daman_image;
+  let another_attachments = info.another_attachments;
+  let signiture = info.signiture;
+  let front_id_image_kafeel = info.front_id_image_kafeel;
+  let back_id_image_kafeel = info.back_id_image_kafeel;
+  let family_book_image_kafeel = info.family_book_image_kafeel;
+  let income_certificate_kafeel = info.income_certificate_kafeel;
+  let daman_image_kafeel = info.daman_image_kafeel;
+  let another_attachments_kafeel = info.another_attachments_kafeel;
 
-// let attachment2 = fs.readFileSync(`${__dirname}/file2.pdf`).toString("base64");
+  let attachments = [
+    front_id_image,
+    back_id_image,
+    family_book_image,
+    income_certificate,
+    daman_image,
+    another_attachments,
+    signiture,
+    front_id_image_kafeel,
+    back_id_image_kafeel,
+    family_book_image_kafeel,
+    income_certificate_kafeel,
+    daman_image_kafeel,
+    another_attachments_kafeel,
+  ].filter((n) => n);
 
-// let attachment3 = fs.readFileSync(`${__dirname}/file3.pdf`).toString("base64");
+  let result = [];
+  for (let i = 0; i < attachments.length; i++) {
+    result.push({
+      content: fs
+        .readFileSync(
+          `${`C:\/Users\/HP\/Desktop\/Github Project\/valenci-backend\/upload`}\/${
+            attachments[i]
+          }`
+        )
+        .toString("base64"),
+      filename: `attachment${i}.pdf`,
+      type: "application/pdf",
+      disposition: "attachment",
+    });
+  }
 
-// let attachment4 = fs.readFileSync(`${__dirname}/file4.pdf`).toString("base64");
+};
 
-// let attachment5 = fs.readFileSync(`${__dirname}/file5.pdf`).toString("base64");
+const sendEmailController = async (id) => {
 
-// let attachment6 = fs.readFileSync(`${__dirname}/file6.pdf`).toString("base64");
+    let html = template(await getInfoController(id));
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: process.env.RECEVIER_EMAIL, // Change to your recipient
+    from: process.env.SENDER_EMAIL, // Change to your verified sender
+    subject: "Valencia Form",
+    text: "معلومات جديدة قادمة من الفورم",
+    html: html,
+    attachments: await attachmentHelper(id),
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
-// let attachment7 = fs.readFileSync(`${__dirname}/file7.pdf`).toString("base64");
-
-// let attachment8 = fs.readFileSync(`${__dirname}/file8.pdf`).toString("base64");
-
-// let attachment9 = fs.readFileSync(`${__dirname}/file9.pdf`).toString("base64");
-
-// let attachment10 = fs.readFileSync(`${__dirname}/file10.pdf`).toString("base64");
-
-// let attachment11 = fs.readFileSync(`${__dirname}/file11.pdf`).toString("base64");
-
-// let attachment12 = fs.readFileSync(`${__dirname}/file12.pdf`).toString("base64");
-
-// let attachment13 = fs.readFileSync(`${__dirname}/file13.pdf`).toString("base64");
-
-
-
-const sendEmailController = (subject, text, html) => {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-    const msg = {
-        to: process.env.RECEVIER_EMAIL, // Change to your recipient
-        from: process.env.SENDER_EMAIL, // Change to your verified sender
-        subject: subject,// 'Sending with SendGrid is Fun',
-        text: text,//'and easy to do anywhere, even with Node.js',
-        html: html, //'<strong>and easy to do anywhere, even with Node.js</strong>',
-        // attachments: [
-        //     {
-        //       content: attachment1,
-        //       filename: "الوجه الاول للهوية.pdf",
-        //       type: "application/pdf",
-        //       disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment2,
-        //         filename: "الوجه الخلفي للهوية.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment3,
-        //         filename: "صورة دفتر العائلة.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment4,
-        //         filename: "شهادة راتب.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment5,
-        //         filename: " الضمان الاجتماعي.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment6,
-        //         filename: "مرفقات أخرى.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment7,
-        //         filename: " الهوية من الامام للكفيل.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //     },
-        //     {
-        //         content: attachment8,
-        //         filename: "الهوية من الخلف للكفيل.pdf",
-        //         type: "application/pdf",
-        //         disposition: "attachment"
-        //       },
-        //       {
-        //           content: attachment9,
-        //           filename: "دفتر العائلة للكفيل.pdf",
-        //           type: "application/pdf",
-        //           disposition: "attachment"
-        //       },
-        //       {
-        //           content: attachment10,
-        //           filename: "شهادة راتب للكفيل.pdf",
-        //           type: "application/pdf",
-        //           disposition: "attachment"
-        //       },
-        //       {
-        //           content: attachment11,
-        //           filename: "مرفقات أخرى للكفيل.pdf",
-        //           type: "application/pdf",
-        //           disposition: "attachment"
-        //       },
-        //       {
-        //           content: attachment12,
-        //           filename: "التوقيع.pdf",
-        //           type: "application/pdf",
-        //           disposition: "attachment"
-        //       },
-        //       {
-        //           content: attachment13,
-        //           filename: "ضمان اجتماعي للكفيل.pdf",
-        //           type: "application/pdf",
-        //           disposition: "attachment"
-        //       },
-
-
-        //   ]
-    }
-    sgMail
-        .send(msg)
-        .then(() => {
-            console.log('Email sent')
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-}
-
-sendEmailController ('Valencia Form','مرحبا وصلك فورم جديد بهذه البيانات',template ({first_name: "رقيه", second_name: "بسام", third_name : "نهار", last_name: " الرفوع"}),)
-module.exports = sendEmailController
+module.exports = sendEmailController;

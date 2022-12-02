@@ -3,12 +3,12 @@ const Info = require("../models/Info")(sequelize, Sequelize);
 
 
 const kafeelFilesController = async (files, id) => {
-    let front_id_image_kafeel =  files.find(o => (o.fieldname == 'front_id_image_kafeel')) ? files.find(o => (o.fieldname == 'front_id_image_kafeel')).path : null
-    let back_id_image_kafeel =  files.find(o => (o.fieldname == 'back_id_image_kafeel')) ? files.find(o => (o.fieldname == 'back_id_image_kafeel')).path : null
-    let family_book_image_kafeel =  files.find(o => (o.fieldname == 'family_book_image_kafeel')) ? files.find(o => (o.fieldname == 'family_book_image_kafeel')).path : null
-    let income_certificate_kafeel =  files.find(o => (o.fieldname == 'income_certificate_kafeel')) ? files.find(o => (o.fieldname == 'income_certificate_kafeel')).path : null
-    let daman_image_kafeel =  files.find(o => (o.fieldname == 'daman_image_kafeel')) ? files.find(o => (o.fieldname == 'daman_image_kafeel')).path : null
-    let another_attachments_kafeel =  files.find(o => (o.fieldname == 'another_attachments_kafeel')) ? files.find(o => (o.fieldname == 'another_attachments_kafeel')).path : null
+    let front_id_image_kafeel =  files.find(o => (o.fieldname == 'front_id_image_kafeel')) ? files.find(o => (o.fieldname == 'front_id_image_kafeel')).filename : null
+    let back_id_image_kafeel =  files.find(o => (o.fieldname == 'back_id_image_kafeel')) ? files.find(o => (o.fieldname == 'back_id_image_kafeel')).filename : null
+    let family_book_image_kafeel =  files.find(o => (o.fieldname == 'family_book_image_kafeel')) ? files.find(o => (o.fieldname == 'family_book_image_kafeel')).filename : null
+    let income_certificate_kafeel =  files.find(o => (o.fieldname == 'income_certificate_kafeel')) ? files.find(o => (o.fieldname == 'income_certificate_kafeel')).filename : null
+    let daman_image_kafeel =  files.find(o => (o.fieldname == 'daman_image_kafeel')) ? files.find(o => (o.fieldname == 'daman_image_kafeel')).filename : null
+    let another_attachments_kafeel =  files.find(o => (o.fieldname == 'another_attachments_kafeel')) ? files.find(o => (o.fieldname == 'another_attachments_kafeel')).filename : null
 
     const updatedRows = await Info.update({
 

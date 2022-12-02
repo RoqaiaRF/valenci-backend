@@ -20,14 +20,14 @@ router.post("/", function (request, response, next) {
     },
   });
 
-  var upload = multer({ storage: storage }).array("signature");
+  var upload = multer({ storage: storage }).any();
   upload(request, response, async function (error) {
     if (!request.files) {
       response.status(400).json({ message: "files required" });
       return;
     }
     response.end(
-      await signitureController(request.files[0].path, request.body.id)
+      await signitureController(request.files[0].filename, request.body.id)
     );
   });
 });
