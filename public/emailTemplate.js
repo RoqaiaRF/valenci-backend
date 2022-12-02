@@ -1,4 +1,9 @@
-<!doctype html>
+
+const template = (info) =>{
+ 
+
+let emailTemplate =
+`<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -341,41 +346,9 @@
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <table role="presentation" class="main">
+            <p><strong> الاسم :  </strong> ${info.first_name + " "+ info.second_name + " "+ info.third_name + " "+ info.last_name}</p> 
+        
 
-              <!-- START MAIN CONTENT AREA -->
-              <tr>
-                <td class="wrapper">
-                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                      <td>
-                        <p>Hi there,</p>
-                        <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                          <tbody>
-                            <tr>
-                              <td align="left">
-                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                  <tbody>
-                                    <tr>
-                                      <td> <a href="http://htmlemail.io" target="_blank">Call To Action</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p>Good luck! Hope it works.</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-            <!-- END MAIN CONTENT AREA -->
-            </table>
             <!-- END CENTERED WHITE CONTAINER -->
 
             <!-- START FOOTER -->
@@ -402,4 +375,12 @@
       </tr>
     </table>
   </body>
-</html>
+</html>`
+
+
+return emailTemplate
+}
+
+
+
+module.exports = template
