@@ -1,167 +1,76 @@
 const template = (info) => {
-  let emailTemplate = `<!doctype html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Email Template</title>
-    <style>
-      /* -------------------------------------
-          GLOBAL RESETS
-      ------------------------------------- */
-      
-      /*All the styling goes here*/
-      
-      img {
-        border: none;
-        -ms-interpolation-mode: bicubic;
-        max-width: 100%; 
-      }
+  let emailTemplate = 
 
-      body {
-        background-color: #f6f6f6;
-        font-family: sans-serif;
-        -webkit-font-smoothing: antialiased;
-        font-size: 14px;
-        line-height: 1.4;
-        margin: 0;
-        padding: 0;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%; 
-      }
-
-      table {
-        border-collapse: separate;
-        mso-table-lspace: 0pt;
-        mso-table-rspace: 0pt;
-        width: 100%; }
-        table td {
+  `<!DOCTYPE html>
+  <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Email Template</title>
+      <style>
+        p strong {
+          text-decoration: underline;
+          color: rgb(60, 60, 60);
+        }
+        body {
+          direction: rtl;
+          background-color: #f6f6f6;
           font-family: sans-serif;
-          font-size: 14px;
-          vertical-align: top; 
-      }
-
-      /* -------------------------------------
-          BODY & CONTAINER
-      ------------------------------------- */
-
-      .body {
-        background-color: #f6f6f6;
-        width: 100%; 
-      }
-
-      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-      .container {
-        display: block;
-        margin: 0 auto !important;
-        /* makes it centered */
-        max-width: 580px;
-        padding: 10px;
-        width: 580px; 
-      }
-
-      /* This should also be a block element, so that it will fill 100% of the .container */
-      .content {
-        box-sizing: border-box;
-        display: block;
-        margin: 0 auto;
-        max-width: 580px;
-        padding: 10px; 
-      }
-
-      /* -------------------------------------
-          HEADER, FOOTER, MAIN
-      ------------------------------------- */
-      .main {
-        background: #ffffff;
-        border-radius: 3px;
-        width: 100%; 
-      }
-
-      .wrapper {
-        box-sizing: border-box;
-        padding: 20px; 
-      }
-
-      .content-block {
-        padding-bottom: 10px;
-        padding-top: 10px;
-      }
-
-      .footer {
-        clear: both;
-        margin-top: 10px;
-        text-align: center;
-        width: 100%; 
-      }
+          /* -webkit-font-smoothing: antialiased; */
+          padding-inline: 7%;
+        }
+        table {
+          width: 100%;
+        }
+        td {
+          border: 1px dashed gray;
+          padding: 5px;
+          border-radius: 3px 0px 0px 3px;
+          border-bottom: none;
+          color: gray;
+        }
+        .key {
+          border-radius: 0px 3px 3px 0px;
+          font-weight: bold;
+          border-left: none;
+          color: black;
+        }
+        .last td {
+          border-bottom: 1px dashed gray;
+        }
+        .footer {
+          clear: both;
+          margin-top: 10px;
+          text-align: center;
+          width: 100%;
+        }
         .footer td,
         .footer p,
         .footer span,
         .footer a {
           color: #999999;
           font-size: 12px;
-          text-align: center; 
-      }
-
-      /* -------------------------------------
-          TYPOGRAPHY
-      ------------------------------------- */
-      h1,
-      h2,
-      h3,
-      h4 {
-        color: #000000;
-        font-family: sans-serif;
-        font-weight: 400;
-        line-height: 1.4;
-        margin: 0;
-        margin-bottom: 30px; 
-      }
-
-      h1 {
-        font-size: 35px;
-        font-weight: 300;
-        text-align: center;
-        text-transform: capitalize; 
-      }
-
-      p,
-      ul,
-      ol {
-        font-family: sans-serif;
-        font-size: 14px;
-        font-weight: normal;
-        margin: 0;
-        margin-bottom: 15px; 
-      }
-        p li,
-        ul li,
-        ol li {
-          list-style-position: inside;
-          margin-left: 5px; 
-      }
-
-      a {
-        color: #3498db;
-        text-decoration: underline; 
-      }
-
-      /* -------------------------------------
-          BUTTONS
-      ------------------------------------- */
-      .btn {
-        box-sizing: border-box;
-        width: 100%; }
+          text-align: center;
+        }
+        .btn {
+          box-sizing: border-box;
+          width: 100%;
+        }
         .btn > tbody > tr > td {
-          padding-bottom: 15px; }
+          padding-bottom: 15px;
+        }
         .btn table {
-          width: auto; 
-      }
+          width: auto;
+        }
         .btn table td {
           background-color: #ffffff;
           border-radius: 5px;
-          text-align: center; 
-      }
+          border: none;
+          text-align: center;
+        }
+        .content-block {
+          border: none;
+        }
         .btn a {
           background-color: #ffffff;
           border: solid 1px #3498db;
@@ -175,395 +84,301 @@ const template = (info) => {
           margin: 0;
           padding: 12px 25px;
           text-decoration: none;
-          text-transform: capitalize; 
-      }
-
-      .btn-primary table td {
-        background-color: #3498db; 
-      }
-
-      .btn-primary a {
-        background-color: #3498db;
-        border-color: #3498db;
-        color: #ffffff; 
-      }
-
-      /* -------------------------------------
-          OTHER STYLES THAT MIGHT BE USEFUL
-      ------------------------------------- */
-      .last {
-        margin-bottom: 0; 
-      }
-
-      .first {
-        margin-top: 0; 
-      }
-
-      .align-center {
-        text-align: center; 
-      }
-
-      .align-right {
-        text-align: right; 
-      }
-
-      .align-left {
-        text-align: left; 
-      }
-
-      .clear {
-        clear: both; 
-      }
-
-      .mt0 {
-        margin-top: 0; 
-      }
-
-      .mb0 {
-        margin-bottom: 0; 
-      }
-
-      .preheader {
-        color: transparent;
-        display: none;
-        height: 0;
-        max-height: 0;
-        max-width: 0;
-        opacity: 0;
-        overflow: hidden;
-        mso-hide: all;
-        visibility: hidden;
-        width: 0; 
-      }
-
-      .powered-by a {
-        text-decoration: none; 
-      }
-
-      hr {
-        border: 0;
-        border-bottom: 1px solid #f6f6f6;
-        margin: 20px 0; 
-      }
-
-      /* -------------------------------------
-          RESPONSIVE AND MOBILE FRIENDLY STYLES
-      ------------------------------------- */
-      @media only screen and (max-width: 620px) {
-        table.body h1 {
-          font-size: 28px !important;
-          margin-bottom: 10px !important; 
+          text-transform: capitalize;
         }
-        table.body p,
-        table.body ul,
-        table.body ol,
-        table.body td,
-        table.body span,
-        table.body a {
-          font-size: 16px !important; 
+  
+        .btn-primary table td {
+          background-color: #3498db;
         }
-        table.body .wrapper,
-        table.body .article {
-          padding: 10px !important; 
+  
+        .btn-primary a {
+          background-color: #3498db;
+          border-color: #3498db;
+          color: #ffffff;
         }
-        table.body .content {
-          padding: 0 !important; 
-        }
-        table.body .container {
-          padding: 0 !important;
-          width: 100% !important; 
-        }
-        table.body .main {
-          border-left-width: 0 !important;
-          border-radius: 0 !important;
-          border-right-width: 0 !important; 
-        }
-        table.body .btn table {
-          width: 100% !important; 
-        }
-        table.body .btn a {
-          width: 100% !important; 
-        }
-        table.body .img-responsive {
-          height: auto !important;
-          max-width: 100% !important;
-          width: auto !important; 
-        }
-      }
-
-      /* -------------------------------------
-          PRESERVE THESE STYLES IN THE HEAD
-      ------------------------------------- */
-      @media all {
-        .ExternalClass {
-          width: 100%; 
-        }
-        .ExternalClass,
-        .ExternalClass p,
-        .ExternalClass span,
-        .ExternalClass font,
-        .ExternalClass td,
-        .ExternalClass div {
-          line-height: 100%; 
-        }
-        .apple-link a {
-          color: inherit !important;
-          font-family: inherit !important;
-          font-size: inherit !important;
-          font-weight: inherit !important;
-          line-height: inherit !important;
-          text-decoration: none !important; 
-        }
-        #MessageViewBody a {
-          color: inherit;
+        .powered-by a {
           text-decoration: none;
-          font-size: inherit;
-          font-family: inherit;
-          font-weight: inherit;
-          line-height: inherit;
         }
-        .btn-primary table td:hover {
-          background-color: #34495e !important; 
+  
+        hr {
+          border: 0;
+          border-bottom: 1px solid #f6f6f6;
+          margin: 20px 0;
         }
-        .btn-primary a:hover {
-          background-color: #34495e !important;
-          border-color: #34495e !important; 
-        } 
-      }
+      </style>
+    </head>
+    <body>
+      <p><strong> معلومات العميل </strong></p>
+  
+      <table
+        role="presentation"
+        border="0"
+        cellpadding="0"
+        cellspacing="0"
+        class="body"
+      >
+        <tbody>
+          <tr>
+            <td class="key">الاسم</td>
+            <td> ${
+              info.first_name +
+              " " +
+              info.second_name +
+              " " +
+              info.third_name +
+              " " +
+              info.last_name
+            }</td>
+          </tr>
+          <tr>
+            <td class="key">الرقم الوطني</td>
+            <td> ${info.national_id}</td>
+          </tr>
+          <tr>
+          <td class="key">رقم الوثيقة </td>
+          <td> ${info.number_doc}</td>
+        </tr>
+          <tr>
+            <td class="key">نوع الوثيقة</td>
+            <td>  ${info.type_doc}</td>
+          </tr>
+          <tr class="last">
+            <td class="key">الجنس</td>
+            <td> ${info.gender}</td>
+          </tr>
+          <tr class="last">
+          <td class="key">رقم الهاتف </td>
+          <td>  ${info.phone}</td>
+          </tr>
+          <tr class="last">
+          <td class="key">المحافظة</td>
+          <td> ${info.province}</td>
+          </tr>
+          <tr class="last">
+          <td class="key"> اسم المنطقة </td>
+          <td> ${info.region}</td>
+          </tr>
+          <tr class="last">
+            <td class="key">اسم الشارع </td>
+            <td> ${info.street}</td>
+          </tr>
 
-    </style>
-  </head>
-  <body>
-    <span class="preheader">معلومات فورم جديد, افتح هنا </span>
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
-      <tr>
-        <td>&nbsp;</td>
-        <td class="container">
-          <div class="content">
+          <tr class="last">
+            <td class="key">اقرب معلم </td>
+            <td> ${info.landmark}</td>
+          </tr>
 
-            <!-- START CENTERED WHITE CONTAINER -->
+          <tr class="last">
+            <td class="key">رقم المنزل </td>
+            <td> ${info.house_number}</td>
+          </tr>
 
-            <p><strong> معلومات العميل :  </strong> </p>
-
-            <p><strong> الاسم :  </strong>
-             ${
-               info.first_name +
-               " " +
-               info.second_name +
-               " " +
-               info.third_name +
-               " " +
-               info.last_name
-             }
-            </p> 
-            <p><strong> الرقم الوطني :  </strong>
-              ${info.national_id}
-            </p> 
-            <p><strong> نوع الوثيقة :  </strong>
-              ${info.type_doc}
-            </p> 
-
-            <p><strong> رقم الوثيقة :  </strong>
-              ${info.number_doc}
-            </p> 
-
-            <p><strong> الجنس :  </strong>
-              ${info.gender}
-            </p> 
-
-            <p><strong> رقم الهاتف :  </strong>
-              ${info.phone}
-            </p> 
-
-            <p><strong> المحافظة :  </strong>
-              ${info.province}
-            </p> 
-            <p><strong> اسم المنطقة :  </strong>
-              ${info.region}
-            </p> 
-
-            <p><strong> اسم الشارع :  </strong>
-              ${info.street}
-            </p> 
-
-            <p><strong> اقرب معلم :  </strong>
-              ${info.landmark}
-            </p> 
-
-            <p><strong> رقم المنزل :  </strong>
-              ${info.house_number}
-            </p> 
-    
-            <p><strong> اسم المعرض :  </strong>
-            ${info.store_name}
-          </p> 
-          <p><strong> اسم الموظف :  </strong>
-            ${info.employee_name}
-          </p> 
-
-          <p><strong> نوع العمل :  </strong>
-            ${info.type_of_employment}
-          </p> 
-
-          <p><strong> جهة العمل :  </strong>
-            ${info.employer}
-          </p> 
-          
-          <p><strong> الوظيفة :  </strong>
-            ${info.job}
-          </p> 
-
-          <p><strong> رقم هاتف العمل :  </strong>
-            ${info.phone_work}
-          </p> 
-
-          <p><strong> معدل الدخل الشهري :  </strong>
-          ${info.monthly_income_rate}
-        </p> 
-        <p><strong> مصدر دخل اخر :  </strong>
-          ${info.other_source_of_income}
-        </p> 
-
-        <p><strong> قيمة الدخل الاخر :  </strong>
-          ${info.other_income_value}
-        </p> 
-
-        <p><strong> مسجل بالضمان : :  </strong>
-          ${info.is_daman}
-        </p> 
-
-        <p><strong> نوع المركبة :  </strong>
-          ${info.vehicle_type}
-        </p> 
-
-        <p><strong> نوع المركبة :  </strong>
-        ${info.vehicle_situation}
-      </p> 
-      <p><strong> الدفعة الاولى :  </strong>
-        ${info.first_payment}
-      </p> 
-
-      <p><strong> فترة التقسيط :  </strong>
-        ${info.installment_period}
-      </p> 
-
-      <p><strong> نوع المركبة :  </strong>
-        ${info.vehicle_type}
-      </p> 
-
-      <p><strong> معلومات الكفيل :  </strong> </p>
-
-      <p><strong> الاسم :  </strong>
-             ${
-               info.first_name_kafeel +
-               " " +
-               info.second_name_kafeel +
-               " " +
-               info.third_name_kafeel +
-               " " +
-               info.last_name_kafeel
-             }
-            </p> 
-            <p><strong> الرقم الوطني :  </strong>
-              ${info.national_id_kafeel}
-            </p> 
-            <p><strong> نوع الوثيقة :  </strong>
-              ${info.type_doc_kafeel}
-            </p> 
-
-            <p><strong> رقم الوثيقة :  </strong>
-              ${info.number_doc_kafeel}
-            </p> 
-
-            <p><strong> الجنس :  </strong>
-              ${info.gender_kafeel}
-            </p> 
-
-            <p><strong> رقم الهاتف :  </strong>
-              ${info.phone_kafeel}
-            </p> 
-
-            <p><strong> المحافظة :  </strong>
-              ${info.province_kafeel}
-            </p> 
-            <p><strong> اسم المنطقة :  </strong>
-              ${info.region_kafeel}
-            </p> 
-
-            <p><strong> اسم الشارع :  </strong>
-              ${info.street_kafeel}
-            </p> 
-
-            <p><strong> اقرب معلم :  </strong>
-              ${info.landmark_kafeel}
-            </p> 
-
-            <p><strong> رقم المنزل :  </strong>
-              ${info.house_number_kafeel}
-            </p> 
-    
-          <p><strong> نوع العمل :  </strong>
-            ${info.type_of_employment_kafeel}
-          </p> 
-
-          <p><strong> جهة العمل :  </strong>
-            ${info.employer_kafeel}
-          </p> 
-          
-          <p><strong> الوظيفة :  </strong>
-            ${info.job_kafeel}
-          </p> 
-
-          <p><strong> رقم هاتف العمل :  </strong>
-            ${info.phone_work_kafeel}
-          </p> 
-
-          <p><strong> معدل الدخل الشهري :  </strong>
-          ${info.monthly_income_rate_kafeel}
-        </p> 
-        <p><strong> مصدر دخل اخر :  </strong>
-          ${info.other_source_of_income_kafeel}
-        </p> 
-
-        <p><strong> قيمة الدخل الاخر :  </strong>
-          ${info.other_income_value_kafeel}
-        </p> 
-
-        <p><strong> مسجل بالضمان : :  </strong>
-          ${info.is_daman_kafeel}
-        </p> 
+          <tr class="last">
+            <td class="key">اسم المعرض </td>
+            <td> ${info.store_name}</td>
+          </tr>
 
 
-    
-            <!-- END CENTERED WHITE CONTAINER -->
+          <tr class="last">
+            <td class="key">اسم الموظف </td>
+            <td> ${info.employee_name}</td>
+          </tr>
 
-            <!-- START FOOTER -->
-            <div class="footer">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="content-block">
-                    <span class="apple-link">Company Inc, Amman Jordan</span>
-                    <br> Don't like these emails? <a href="http://fareza.net">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://fareza.net">Fareza</a>.
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <!-- END FOOTER -->
 
-          </div>
-        </td>
-        <td>&nbsp;</td>
+          <tr class="last">
+            <td class="key">نوع العمل :</td>
+            <td> ${info.employer}</td>
+          </tr>
+
+
+          <tr class="last">
+            <td class="key">الوظيفة</td>
+            <td> ${info.job}</td>
+          </tr>
+
+
+          <tr class="last">
+            <td class="key"> رقم هاتف العمل </td>
+            <td> ${info.phone_work}</td>
+          </tr>
+
+          <tr class="last">
+            <td class="key">معدل الدخل الشهري </td>
+            <td> ${info.monthly_income_rate}</td>
+          </tr>
+
+          <tr class="last">
+            <td class="key">مصدر دخل اخر </td>
+            <td> ${info.other_source_of_income}</td>
+          </tr>
+
+          <tr class="last">
+            <td class="key">قيمة الدخل الاخر </td>
+            <td> ${info.other_income_value}</td>
+          </tr>
+
+
+        
+          <tr class="last">
+          <td class="key">مسجل بالضمان </td>
+          <td> ${info.is_daman}</td>
+        </tr>
+
+
+        <tr class="last">
+        <td class="key"> نوع المركبة </td>
+        <td> ${info.vehicle_type}</td>
+       </tr>
+
+
+      <tr class="last">
+        <td class="key">حالة المركبة </td>
+        <td> ${info.vehicle_situation}</td>
+       </tr>
+
+
+    <tr class="last">
+      <td class="key">الدفعة الاولى </td>
+      <td> ${info.first_payment}</td>
+     </tr>
+
+
+        <tr class="last">
+        <td class="key">فترة التقسيط </td>
+        <td> ${info.installment_period}</td>
       </tr>
-    </table>
-  </body>
-</html>`;
 
-  return emailTemplate;
-};
 
-module.exports = template;
+      <tr class="last">
+      <td class="key">الاسم للكفيل</td>
+      <td>  ${
+        info.first_name_kafeel +
+        " " +
+        info.second_name_kafeel +
+        " " +
+        info.third_name_kafeel +
+        " " +
+        info.last_name_kafeel
+      }</td>
+      </tr>
+
+
+      <tr class="last">
+      <td class="key">الرقم الوطني  للكفيل</td>
+      <td> ${info.national_id_kafeel}</td>
+      </tr>
+
+
+      <tr class="last">
+      <td class="key">نوع الوثيقة  للكفيل</td>
+      <td> ${info.type_doc_kafeel}</td>
+    </tr>
+
+    <tr class="last">
+    <td class="key">رقم الوثيقة للكفيل</td>
+    <td> ${info.number_doc_kafeel}</td>
+  </tr>
+
+  <tr class="last">
+  <td class="key">الجنس للكفيل</td>
+  <td> ${info.gender_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">رقم الهاتف للكفيل</td>
+<td> ${info.phone_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">المحافظة للكفيل</td>
+<td> ${info.region_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">اسم المنطقة  للكفيل</td>
+<td> ${info.region_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key"> اسم الشارع للكفيل</td>
+<td> ${info.street_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">اقرب معلم للكفيل</td>
+<td> ${info.landmark_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">رقم المنزل  للكفيل</td>
+<td> ${info.house_number_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">نوع العمل  للكفيل</td>
+<td> ${info.type_of_employment_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">جهة العمل  للكفيل</td>
+<td> ${info.employer_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">الوظيفة للكفيل</td>
+<td> ${info.job_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">رقم هاتف العمل  للكفيل</td>
+<td> ${info.phone_work_kafeel}</td>
+</tr>
+
+
+<tr class="last">
+<td class="key">معدل الدخل الشهري  للكفيل</td>
+<td> ${info.monthly_income_rate_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">مصدر دخل اخر للكفيل</td>
+<td> ${info.other_source_of_income_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">قيمة الدخل الاخر للكفيل</td>
+<td> ${info.other_income_value_kafeel}</td>
+</tr>
+
+<tr class="last">
+<td class="key">مسجل بالضمان </td>
+<td> ${info.is_daman_kafeel}</td>
+</tr>
+        </tbody>
+      </table>
+      <div class="footer">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="content-block">
+              <span class="apple-link">Company Inc, Amman Jordan</span>
+              <br />
+              Don't like these emails?
+              <a href="http://fareza.net">Unsubscribe</a>.
+            </td>
+          </tr>
+          <tr>
+            <td class="content-block powered-by">
+              Powered by <a href="http://fareza.net">Fareza</a>.
+            </td>
+          </tr>
+        </table>
+      </div>
+    </body>
+  </html>
+  `
+
+  return emailTemplate
+    }
+
+
+  module.exports = template
