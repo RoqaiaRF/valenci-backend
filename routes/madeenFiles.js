@@ -9,7 +9,7 @@ router.post("/", function (request, response, next) {
   const fileSize = parseInt(request.headers['content-length']);
 
   if (fileSize > 10485760 ) {
-    response.status(400).json({ message: "لا يسمح بحجم ملفات اكبر من 10 ميجا" });
+    response.status(400).json({ space: "لا يسمح بحجم ملفات اكبر من 10 ميجا" });
     }
     else {
       var storage = multer.diskStorage({

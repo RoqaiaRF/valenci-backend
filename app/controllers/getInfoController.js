@@ -14,7 +14,8 @@ const getInfoController = async (id) => {
     //     console.error(error)
     //     return 'Failed to retrieve data : ', error;
     // });
-    // console.log("all info: ", allInfo.dataValues)
+    //  console.log("all info: ", allInfo.dataValues)
     return allInfo.dataValues 
  }
+ getInfoController(20)
 module.exports = getInfoController
